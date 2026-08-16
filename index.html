@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exercise 05</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 50px; }
+    input { padding: 8px; }
+    button { padding: 8px 15px; }
+    #result { margin-top: 20px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h1>Cloud Computing – Exercise 05</h1>
+  <input id="name" placeholder="Enter name" />
+  <button onclick="callApi()">Greet</button>
+  <div id="result"></div>
+
+  <script>
+    async function callApi() {
+      const name = document.getElementById("name").value;
+      const res = await fetch(`API_URL?name=${name}`);
+      const data = await res.json();
+      document.getElementById("result").innerText =
+        data.message + " (count: " + data.count + ")";
+    }
+  </script>
+</body>
+</html>
